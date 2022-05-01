@@ -21,7 +21,7 @@ def check(fraction = ""):
         list: List content two item. First item is check result, boolean. Second item is message about error
     """
     
-    if not re.match(r"(\d*\s)?\d+/\d+", fraction):
+    if not re.match(r"-?(\d*\s)?\d+/\d+", fraction):
         return [False, 'Wrong format input string']
     
     fraction_list = fraction.split("/")
@@ -57,11 +57,11 @@ def makeList(fraction = ""):
         answer = ['0',fraction_list_whole_part[0],fraction_list[1]]
     return [ int(item) for item in answer ]
 
-def toString( fract = [] ):
+def toString( fract = [0,0,0] ):
     """Get string view for fraction list 
 
     Args:
-        fract (list, optional): list with 3 item. See function makeList. Defaults to [].
+        fract (list, optional): list with 3 item. See function makeList. Defaults to [0,0,0].
 
     Returns:
         String: String view for farction list
@@ -76,6 +76,6 @@ def toString( fract = [] ):
         return "{0} {1}/{2}".format(*fract)
     return "{1}/{2}".format(*fract)
     
-def toNormalize(fract = []):
+def toNormalize(fract = [0,0,0]):
     answer = []
     return answer

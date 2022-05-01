@@ -15,6 +15,14 @@ class TestFraction(unittest.TestCase):
         input_string = "12 123/1234"
         answer = fraction.check(input_string)
         self.assertListEqual(answer,[True,'Good'])
+    def testCheckNegativeNumeberWithWholePart(self):
+        input_string = "-78 12/13"
+        answer = fraction.check(input_string)
+        self.assertListEqual(answer,[True,'Good'])
+    def testCheckNegativeNumeberWithWholePart(self):
+        input_string = "-1414/1415"
+        answer = fraction.check(input_string)
+        self.assertListEqual(answer,[True,'Good'])
     def testCheckWrongFormat(self):
         input_string = "bla-bla-bla"
         answer = fraction.check(input_string)
