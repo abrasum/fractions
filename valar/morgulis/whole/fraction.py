@@ -91,18 +91,21 @@ def toNormalize(fract = [1,0,0]):
     Returns:
         _type_: _description_
     """
-    if not fract[1] or not fract[2]:
+    module_numerator = (fract[1]*fract[1])**0.5
+    if not module_numerator or not fract[2]:
         return [fract[0],0,0]
-    if fract[2] > fract[1]:
-        divider = respectByEvclid([fract[2],fract[1]])
-        return [fract[0], fract[1] // divider, fract[2] // divider]
+    if fract[2] > module_numerator:
+        divider = respectByEvclid([fract[2],module_numerator])
+        return [fract[0], int(fract[1] // divider), int(fract[2] // divider)]
     whole = fract[1] // fract[2]
-    remains = fract[1] % fract[2]
+    remains = module_numerator % fract[2]
     if remains:
         divider = respectByEvclid([fract[2],remains])
-        return [fract[0] + whole, remains // divider, fract[2] // divider]
-    return [ fract[0] + whole, 0, 0]
+        return [int(fract[0] + whole), int(remains // divider), int(fract[2] // divider)]
+    return [ int(fract[0] + whole), 0, 0]
 
+def unNormalize(fract = [0,0,0]):
+    return [0,fract[0]*fract[2] + fract[1], fract[2]]
 
 def respectByEvclid(numbers = [0,0]):
     """Evclid is very cool man! 
