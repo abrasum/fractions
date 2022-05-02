@@ -3,6 +3,10 @@ import unittest
 import fraction
 
 class TestFraction(unittest.TestCase):
+    def testCheckOnlyWholePart(self):
+        input_string = "146"
+        answer = fraction.check(input_string)
+        self.assertListEqual(answer,[True,'Good'])
     def testCheckOnlyFracts(self):
         input_string = "1/2"
         answer = fraction.check(input_string)
@@ -67,11 +71,19 @@ class TestFraction(unittest.TestCase):
         fract = [3,1870,770]
         answer = fraction.toNormalize(fract)
         self.assertEqual(answer,[5,3,7])
+    def testNormalizeBorderCase(self):
+        fract = [0,6,2]
+        answer = fraction.toNormalize(fract)
+        self.assertEqual(answer,[3,0,0])    
+    def testRespectByEvclid(self):
+        numbers = [1071, 462]
+        self.assertEqual(fraction.respectByEvclid(numbers), 21)
+    def testRespectByEvclidOtherCase(self):
+        numbers = [123, 122]
+        self.assertEqual(fraction.respectByEvclid(numbers), 1)
     
     
     
 if __name__ == '__main__':
     unittest.main()
         
-        
-    
