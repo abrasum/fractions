@@ -47,9 +47,9 @@ class TestOperations(unittest.TestCase):
         self.assertListEqual([4,12,35],operations.multiple([1,3,5], [2,5,7]))
     def testMultipleForWholePart(self):
         """
-        2 * 3/7 = 14/7 * 3/7 = 42/49
+        2 * 3/7 = 14/7 * 3/7 = 42/49 = 6/7
         """
-        self.assertListEqual([0,42,49],operations.multiple([2,0,0], [0,3,7]))
+        self.assertListEqual([0,6,7],operations.multiple([2,0,0], [0,3,7]))
     def testDivisionOnlyFractionPart(self):
         """
         4/5 / 2/3 = 4/5 * 3/2 = 12/10 = 1 1/5

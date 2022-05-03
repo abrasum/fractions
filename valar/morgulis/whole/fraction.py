@@ -105,6 +105,8 @@ def toNormalize(fract = [1,0,0]):
     return [ int(fract[0] + whole), 0, 0]
 
 def unNormalize(fract = [0,0,0]):
+    if not fract[1] or not fract[2]:
+        return [0,fract[0],1]
     return [0,fract[0]*fract[2] + fract[1], fract[2]]
 
 def respectByEvclid(numbers = [0,0]):

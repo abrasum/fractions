@@ -81,6 +81,8 @@ class TestFraction(unittest.TestCase):
     def testRespectByEvclidOtherCase(self):
         numbers = [123, 122]
         self.assertEqual(fraction.respectByEvclid(numbers), 1)
+    def testUnNormalize(self):
+        self.assertListEqual([0,4,3], fraction.unNormalize([1,1,3]))
     
     
     
